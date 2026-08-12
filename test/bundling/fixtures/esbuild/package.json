@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "prestart": "node ../../scripts/createFixture.js esbuild",
-    "start": "pnpm build && concurrently --success first --kill-others \"pnpm server\" \"node testEsbuildIntegration\"",
-    "build": "esbuild esbuild.fixture.js --bundle --outfile=build/esbuild.fixture.js --tsconfig=tsconfig.json",
+    "start": "node init && pnpm build && concurrently --success first --kill-others \"pnpm server\" \"node testEsbuildIntegration\"",
+    "build": "node init && esbuild esbuild.fixture.js --bundle --outfile=build/esbuild.fixture.js --tsconfig=tsconfig.json",
     "server": "serve -p 5001 -s build"
   },
   "dependencies": {

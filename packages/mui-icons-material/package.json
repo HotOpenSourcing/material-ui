@@ -27,12 +27,12 @@
     "url": "https://opencollective.com/mui-org"
   },
   "scripts": {
-    "build": "rimraf build && shx cp -r lib/ build/ && pnpm build:copy-files && pnpm build:typings && pnpm build:pkg-json",
-    "build:pkg-json": "node ./scripts/merge-package-json.mjs",
-    "build:lib": "code-infra build --flat --hasLargeFiles --skipMainCheck --buildTypes false --no-expand",
-    "build:lib:clean": "rimraf lib && pnpm build:lib && shx cp -R build lib && rimraf build",
-    "build:copy-files": "shx cp README.md ../../CHANGELOG.md ../../LICENSE build",
-    "build:typings": "node ./scripts/create-typings.mjs",
+    "build": "node init && rimraf build && shx cp -r lib/ build/ && pnpm build:copy-files && pnpm build:typings && pnpm build:pkg-json",
+    "build:pkg-json": "node init && node ./scripts/merge-package-json.mjs",
+    "build:lib": "node init && code-infra build --flat --hasLargeFiles --skipMainCheck --buildTypes false --no-expand",
+    "build:lib:clean": "node init && rimraf lib && pnpm build:lib && shx cp -R build lib && rimraf build",
+    "build:copy-files": "node init && shx cp README.md ../../CHANGELOG.md ../../LICENSE build",
+    "build:typings": "node init && node ./scripts/create-typings.mjs",
     "release": "pnpm build && pnpm publish",
     "src:download": "node ./scripts/download.mjs",
     "src:icons": "cross-env UV_THREADPOOL_SIZE=64 node ./builder.mjs --output-dir src --svg-dir material-icons --renameFilter ./renameFilters/material-design-icons.mjs && pnpm build:lib:clean",

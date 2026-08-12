@@ -21,7 +21,7 @@
   },
   "scripts": {
     "prebuild": "rimraf ./build",
-    "build": "tsc -b tsconfig.json",
+    "build": "node init && tsc -b tsconfig.json",
     "release:publish": "pnpm build && pnpm publish --tag latest",
     "release:publish:dry-run": "pnpm build && pnpm publish --tag latest --registry=\"http://localhost:4873/\"",
     "test": "pnpm --workspace-root test:unit --project \"*:@mui/internal-scripts\"",
